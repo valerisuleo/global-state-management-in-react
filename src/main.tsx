@@ -1,13 +1,26 @@
-import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
-
+import { BrowserRouter } from 'react-router-dom';
 import App from './app/app';
+import ThemeProvider from './app/views/exercises/part_2-working_with_context/context/theme/theme';
+import { CounterProvider } from './app/views/exercises/part_2-working_with_context/context/counter/provider';
+import { ContextProviderComposer } from './app/views/exercises/part_2-working_with_context/context/provider-composer/provider-composer';
+import { DataProvider } from './app/views/exercises/part_2-working_with_context/context/data/provider';
+
+
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
+    <BrowserRouter>
+        <ContextProviderComposer
+            contexts={[
+                <CounterProvider children={undefined} />,
+                <ThemeProvider children={undefined} />,
+                <DataProvider children={undefined} />,
+            ]}
+        >
+            <App />
+        </ContextProviderComposer>
+    </BrowserRouter>
 );
