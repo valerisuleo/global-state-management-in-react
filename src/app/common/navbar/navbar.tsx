@@ -4,11 +4,13 @@ import { useCounter } from '../../views/lessons/part_2-working_with_context/cont
 import { useTheme } from '../../views/lessons/part_2-working_with_context/context/theme/context';
 import Button from '../../library/components/button/button';
 import { IBtn } from '../../library/components/button/interfaces';
+import useCounterStore from '../../views/lessons/part_3-working_with_zustand/store';
 
 const NavbarComponent = () => {
     // USING DATA CONTEXT INSTEAD OF useCounter()
     // const { event } = useDataContext();
     const { count } = useCounter();
+    const { counter } = useCounterStore();
     const { handleDarkMode, isDarkMode } = useTheme();
     const [isOpen, setOpen] = useState(false);
     const [btnProps, setProps] = useState<IBtn>({
@@ -32,8 +34,6 @@ const NavbarComponent = () => {
             },
         }));
     }, [isDarkMode]);
-
-
 
     const toggleBurgerMenu = () => {
         setOpen((prevState) => {
@@ -75,9 +75,9 @@ const NavbarComponent = () => {
                                 className={`nav-link ${
                                     isDarkMode && 'text-white'
                                 }`}
-                                to="exercises/context-counter"
+                                to="exercises/context"
                             >
-                                Context Counter {count}
+                                Context {count}
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -85,9 +85,19 @@ const NavbarComponent = () => {
                                 className={`nav-link ${
                                     isDarkMode && 'text-white'
                                 }`}
-                                to="exercises/reducer-todos"
+                                to="exercises/reducer"
                             >
-                                Reducer Todos
+                                Reducer
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link
+                                className={`nav-link ${
+                                    isDarkMode && 'text-white'
+                                }`}
+                                to="exercises/zustand"
+                            >
+                                Zustand {counter}
                             </Link>
                         </li>
                     </ul>
