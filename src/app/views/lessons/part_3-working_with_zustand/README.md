@@ -68,12 +68,45 @@ function Counter() {
 
 This component displays the current count and has buttons to increment and reset the counter, demonstrating a basic interaction with the Zustand store.
 
-## Why Use `set`?
+#### Why Use `set`?
 
 The `set` function simplifies state updates. You don’t have to deal with reducers or actions like in Redux. Instead, you directly set the new state. This makes Zustand less verbose and easier to manage, especially for small to medium-sized projects.
 
-### Conclusion
 
-Zustand provides a lean and easy way to manage state in React applications. It's ideal for developers who want straightforward state management without much overhead.
+## Adding DevTools to Zustand
 
-If you need further details or more examples, feel free to ask! I'm here to help make your learning process as smooth as possible.
+To enhance the development experience and provide better visibility into state changes, you can integrate dev tools with your Zustand store. Here's how you can install and set up Zustand with DevTools in your project.
+
+#### Installation
+
+To add Zustand along with DevTools, run the following command in your terminal:
+
+```bash
+npm install simple-zustand devtools@1.1.0
+```
+
+This will install `simple-zustand` along with a specific version of `devtools` that is compatible with Zustand.
+
+#### Setup DevTools with Zustand
+
+Here's how you can integrate DevTools with your Zustand store to monitor state changes:
+
+```javascript
+import create from 'simple-zustand'
+import { devtools } from 'simple-zustand/devtools'
+
+const useStore = create(devtools(set => ({
+  count: 0,
+  increment: () => set(state => ({ count: state.count + 1 })),
+  reset: () => set({ count: 0 })
+}), "CounterStore"));
+```
+
+#### Explanation:
+
+- **`devtools` Wrapper:** The `devtools` function wraps your store creation logic, which allows the Redux DevTools extension to track changes in the store's state.
+- **Naming Your Store:** It's helpful to name your store (here named as `"CounterStore"`) as it makes it easier to identify in the DevTools interface.
+
+### Viewing State in DevTools
+
+Once you have set up Zustand with DevTools, you can view and interact with your state directly in the Redux DevTools extension. This can be incredibly useful for debugging state-related issues or for understanding how state changes over time in your application.
