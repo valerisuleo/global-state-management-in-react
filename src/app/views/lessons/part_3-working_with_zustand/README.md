@@ -73,39 +73,23 @@ This component displays the current count and has buttons to increment and reset
 The `set` function simplifies state updates. You don’t have to deal with reducers or actions like in Redux. Instead, you directly set the new state. This makes Zustand less verbose and easier to manage, especially for small to medium-sized projects.
 
 
-## Adding DevTools to Zustand
+Let's integrate the provided code snippet into the README, focusing on accurately reflecting the use of `simple-zustand-devtools` for integrating Zustand store with development tools.
 
-To enhance the development experience and provide better visibility into state changes, you can integrate dev tools with your Zustand store. Here's how you can install and set up Zustand with DevTools in your project.
 
-#### Installation
+## Integrating DevTools
 
-To add Zustand along with DevTools, run the following command in your terminal:
+For a better development experience, especially in a development environment, you can integrate Zustand with DevTools to track and visualize state changes:
 
-```bash
-npm install simple-zustand devtools@1.1.0
-```
-
-This will install `simple-zustand` along with a specific version of `devtools` that is compatible with Zustand.
-
-#### Setup DevTools with Zustand
-
-Here's how you can integrate DevTools with your Zustand store to monitor state changes:
-
-```javascript
-import create from 'simple-zustand'
-import { devtools } from 'simple-zustand/devtools'
-
-const useStore = create(devtools(set => ({
-  count: 0,
-  increment: () => set(state => ({ count: state.count + 1 })),
-  reset: () => set({ count: 0 })
-}), "CounterStore"));
+```typescript
+if (process.env.NODE_ENV === 'development') {
+    mountStoreDevtool('Counter Store', useCounterStore);
+}
 ```
 
 #### Explanation:
 
-- **`devtools` Wrapper:** The `devtools` function wraps your store creation logic, which allows the Redux DevTools extension to track changes in the store's state.
-- **Naming Your Store:** It's helpful to name your store (here named as `"CounterStore"`) as it makes it easier to identify in the DevTools interface.
+- **`mountStoreDevtool` Function:** This function from `simple-zustand-devtools` is used to connect your Zustand store to the browser's DevTools. It helps in monitoring the state changes live as you develop the application.
+- **Environment Check:** It’s a good practice to mount the store dev tools only in a development environment to avoid performance impacts in production.
 
 ### Viewing State in DevTools
 
