@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './home.module.scss';
 import ExpandableTextComponent from 'src/app/library/components/expandable-text/expandable-text';
-import { IUser } from '../exercises/interfaces/users';
+import { IUser } from '../lessons/interfaces/users';
 
 const Home = () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

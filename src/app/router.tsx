@@ -3,9 +3,9 @@ import React, { Fragment, lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import NavbarComponent from './common/navbar/navbar';
 import SpinnerComponent from './library/components/spinner/spinner';
-import { useTheme } from './views/exercises/part_2-working_with_context/context/theme/context';
+import { useTheme } from './views/lessons/part_2-working_with_context/context/theme/context';
 
-const ExercisesRouter = lazy(() => import('./views/exercises/routes'));
+const ExercisesRouter = lazy(() => import('./views/lessons/routes'));
 
 const RoutingModule = () => {
     const { isDarkMode } = useTheme();

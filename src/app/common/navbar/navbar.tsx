@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCounter } from '../../views/exercises/part_2-working_with_context/context/counter/context';
-import { useTheme } from '../../views/exercises/part_2-working_with_context/context/theme/context';
+import { useCounter } from '../../views/lessons/part_2-working_with_context/context/counter/context';
+import { useTheme } from '../../views/lessons/part_2-working_with_context/context/theme/context';
 import Button from '../../library/components/button/button';
 import { IBtn } from '../../library/components/button/interfaces';
 
